@@ -3,14 +3,13 @@
 export default async function handler(req, res) {
   
   // 1. הגדרות אבטחה (CORS) - מתאים ל-Node.js
-  //    זה החלק החשוב שמתקן את השגיאה
-  res.setHeader('Access-Control-Allow-Origin', '*'); // מאפשר לכל אחד (כולל התוסף)
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // 2. טיפול בבקשת "preflight" (OPTIONS) שהדפדפן שולח קודם
+  // 2. טיפול בבקשת "preflight" (OPTIONS)
   if (req.method === 'OPTIONS') {
-    res.status(204).end(); // שלח תשובה ריקה ומוצלחת
+    res.status(204).end();
     return;
   }
 
